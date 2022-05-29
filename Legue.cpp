@@ -35,6 +35,7 @@ namespace ariel{
     }
 
     Team& Legue::generate_team(int num){
+        //pick the team's talent uniformly at random between 0 and 1
         const double lower_bound = 0;
         const double upper_bound = 1;
         std::uniform_real_distribution<double> unif(lower_bound,upper_bound);

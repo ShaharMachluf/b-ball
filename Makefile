@@ -19,6 +19,9 @@ run: test
 test:  $(OBJECTS)
 	$(CXX) $(CXXFLAGS) $^ -o $@
 
+main: Main.o $(OBJECTS)
+	$(CXX) $(CXXFLAGS) $^ -o main
+
 %.o: %.cpp $(HEADERS)
 	$(CXX) $(CXXFLAGS) --compile $< -o $@
 
