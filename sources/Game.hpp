@@ -1,6 +1,8 @@
+#pragma once
 #include <iostream>
 #include <string>
 #include "Team.hpp"
+
 
 namespace ariel{
     class Game{

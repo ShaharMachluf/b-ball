@@ -1,9 +1,6 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "Game.hpp"
-#include "Team.hpp"
-#include "Legue.hpp"
 #include "Schedule.hpp"
 
 using namespace std;
@@ -15,8 +12,8 @@ namespace ariel{
                 Game curr {*teams.at(i), *teams.at(j)};
                 games.push_back(&curr);
                 //switch house team with outside team
-                Game curr {*teams.at(j), *teams.at(i)};
-                games.push_back(&curr);
+                Game curr2 {*teams.at(j), *teams.at(i)};
+                games.push_back(&curr2);
             }
         }
     }

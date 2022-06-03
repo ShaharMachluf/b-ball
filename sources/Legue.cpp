@@ -2,7 +2,6 @@
 #include <string>
 #include <vector>
 #include <random>
-#include "Team.hpp"
 #include "Legue.hpp"
 
 using namespace std;
@@ -22,7 +21,8 @@ namespace ariel{
                 ++i;
             }
             while(i < team_count){//generate the rest
-                this->teams.push_back(&this->generate_team(i));
+                this->generate_team(i);
+                this->teams.push_back(temp);
                 ++i;
             }
         }
@@ -30,11 +30,12 @@ namespace ariel{
 
     Legue::Legue(){
         for(unsigned int i=0; i < team_count; ++i){
-            this->teams.push_back(&this->generate_team(i));
+            this->generate_team(i);
+            this->teams.push_back(temp);
         }
     }
 
-    Team& Legue::generate_team(int num){
+    void Legue::generate_team(unsigned int num){
         //pick the team's talent uniformly at random between 0 and 1
         const double lower_bound = 0;
         const double upper_bound = 1;
@@ -42,7 +43,7 @@ namespace ariel{
         std::default_random_engine re;
         double a_random_double = unif(re);
         Team curr {to_string(num), a_random_double};
-        return curr;
+        *temp = curr;
     }
     
     std::vector<Team*> Legue::get_teams(){

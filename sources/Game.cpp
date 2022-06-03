@@ -2,7 +2,6 @@
 #include <string>
 #include <random>
 #include <cmath>
-#include "Team.hpp"
 #include "Game.hpp"
 
 using namespace std;

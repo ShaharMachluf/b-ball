@@ -1,6 +1,5 @@
 #include <iostream>
 #include <vector>
-#include "Legue.hpp"
 #include "Schedule.hpp"
 
 namespace ariel{
