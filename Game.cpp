@@ -25,6 +25,10 @@ namespace ariel{
         else{
             this->out_p += BONUS;
         }
+        this->house->set_p_shot(this->house_p);
+        this->house->set_p_taken(this->out_p);
+        this->out->set_p_shot(this->out_p);
+        this->out->set_p_taken(this->house_p);
     }
 
     int Game::set_points(int min, int max){
@@ -49,6 +53,30 @@ namespace ariel{
     }
 
     Team& Game::winner(){
-        return(this->house_p > this->out_p ? *house : *out);
+        if(this->house_p > this->out_p){
+            this->house->add_win();
+            this->out->add_loss();
+            return *this->house;
+        }else{
+            this->out->add_win();
+            this->house->add_loss();
+            return *this->out;
+        }
+    }
+
+    Team& Game::loser(){
+        if(*this->house == this->winner()){
+            return *this->out;
+        }else{
+            return *this->house;
+        }
+    }
+
+    Team& Game::get_house(){
+        return *this->house;
+    }
+
+    Team& Game::get_out(){
+        return *this->out;
     }
 }
