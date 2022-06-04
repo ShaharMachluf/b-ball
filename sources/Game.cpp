@@ -7,9 +7,10 @@
 using namespace std;
 
 constexpr int BONUS = 10;
-constexpr int min_h = 55;
-constexpr int min_o = 50;
-constexpr int max_p = 100;
+constexpr double min_h = 55;
+constexpr double min_o = 50;
+constexpr double max_p = 100;
+constexpr double divide = 6;
 
 namespace ariel{
     Game::Game(Team &h, Team& o){
@@ -30,52 +31,49 @@ namespace ariel{
         this->out->set_p_taken(this->house_p);
     }
 
-    int Game::set_points(int min, int max){
+    int Game::set_points(double min, double max){
         double E = (min + max)/2; //mean
-        double Var = (max - min)/6; //standart deviation
+        double Var = (max - min)/divide; //standart deviation
         std::random_device rd{};
         std::mt19937 gen{rd()};
         // values near the mean are the most likely
         // standard deviation affects the dispersion of generated values from the mean
         std::normal_distribution<> d{E,Var};
-        return std::round(d(gen));
+        return static_cast<int>(std::round(d(gen)));
     }
 
-    int Game::get_points(string team){
+    int Game::get_points(string const &team) const{
         if(team == "house"){
             return house_p;
-        }else if(team == "out"){
+        }if(team == "out"){
             return out_p;
-        }else{
-            throw("not a valid team");
         }
+        throw("not a valid team");
     }
 
-    Team& Game::winner(){
+    Team& Game::winner() const{
         if(this->house_p > this->out_p){
             this->house->add_win();
             this->out->add_loss();
             return *this->house;
-        }else{
-            this->out->add_win();
-            this->house->add_loss();
-            return *this->out;
         }
+        this->out->add_win();
+        this->house->add_loss();
+        return *this->out;
     }
 
-    Team& Game::loser(){
+    Team& Game::loser() const{
         if(*this->house == this->winner()){
             return *this->out;
-        }else{
-            return *this->house;
         }
-    }
-
-    Team& Game::get_house(){
         return *this->house;
     }
 
-    Team& Game::get_out(){
+    Team& Game::get_house() const{
+        return *this->house;
+    }
+
+    Team& Game::get_out() const{
         return *this->out;
     }
 }

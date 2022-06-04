@@ -11,7 +11,7 @@ namespace ariel{
         int p_shot;//points the team earned
         int p_taken;//points the team lost
         public:
-        Team(std::string n, double t);
+        Team(std::string const &n, double t);
         double get_talent() const;
         int get_wins() const;
         void add_win();
@@ -24,5 +24,6 @@ namespace ariel{
         bool operator==(const Team &other) const;
         bool operator!=(const Team &other) const;
         std::string get_name() const;
+        // ~Team();
     };
 }

@@ -10,8 +10,9 @@ namespace ariel{
         Team *temp;
         void generate_team(unsigned int num);
         public:
-        Legue(std::vector <Team*> vec);//generate only some of the team or not at all
+        Legue(const std::vector <Team*> &vec);//generate only some of the team or not at all
         Legue();//generate the whole team
-        std::vector<Team*> get_teams();
+        std::vector<Team*> get_teams() const;
+        // ~Legue();
     };
 }

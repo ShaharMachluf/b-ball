@@ -9,7 +9,8 @@ namespace ariel{
     class Schedule{
         std::vector<Game*> games;
         public:
-        Schedule(Legue legue);
-        std::vector<Game*> get_games();
+        Schedule(Legue const &legue);
+        std::vector<Game*> get_games() const;
+        ~Schedule();
     };
 }

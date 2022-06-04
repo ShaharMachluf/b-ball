@@ -5,8 +5,8 @@
 using namespace std;
 
 namespace ariel{
-    Team::Team(std::string n, double t):wins(0), losses(0), p_shot(0), p_taken(0){
-        if(n == ""){
+    Team::Team(std::string const &n, double t):wins(0), losses(0), p_shot(0), p_taken(0){
+        if(n.empty()){
             throw("team must have a name");
         }
         if(t < 0 || t > 1){
@@ -62,4 +62,7 @@ namespace ariel{
     string Team::get_name() const{
         return this->name;
     }
+    // Team::~Team(){
+    //     delete &this;
+    // }
 }

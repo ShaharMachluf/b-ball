@@ -8,7 +8,7 @@ using namespace std;
 constexpr int team_count = 20;
 
 namespace ariel{
-    Legue::Legue(const std::vector <Team*> vec){
+    Legue::Legue(const std::vector <Team*> &vec){
         if(vec.size() > team_count){
             throw("there are only 20 teams in a legue");
         }
@@ -33,6 +33,7 @@ namespace ariel{
                 ++i;
             }
         }
+        temp = vec.at(0);
     }
 
     Legue::Legue(){
@@ -40,6 +41,7 @@ namespace ariel{
             this->generate_team(i);
             this->teams.push_back(temp);
         }
+        temp = this->teams.at(0);
     }
 
     void Legue::generate_team(unsigned int num){
@@ -53,7 +55,13 @@ namespace ariel{
         temp = &curr;
     }
     
-    std::vector<Team*> Legue::get_teams(){
+    std::vector<Team*> Legue::get_teams() const{
         return this->teams;
     }
+
+    // Legue::~Legue(){
+    //     for(unsigned int i=0; i<this->teams.size(); ++i){
+    //         delete this->teams.at(i);
+    //     }
+    // }
 }

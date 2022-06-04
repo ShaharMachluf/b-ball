@@ -17,11 +17,11 @@ namespace ariel{
             });
     }
 
-    std::vector<Team*> Stats::get_by_wins(){
+    std::vector<Team*> Stats::get_by_wins() const{
         return this->by_wins;
     }
 
-    std::vector<Team*> Stats::get_by_shoots(){
+    std::vector<Team*> Stats::get_by_shoots() const{
         return this->by_shoots;
     }
 
@@ -32,14 +32,14 @@ namespace ariel{
     
     int Stats::win_seq(){
         int seq = 0;
-        int temp;
+        int temp = 0;
         vector<Team*> teams = this->legue->get_teams();
         vector<Game*> games = this->schedule->get_games();
         for(unsigned int i=0; i< teams.size(); ++i){
             Team* curr = teams.at(i);
             temp = 0;
             for(unsigned int j = 0; j<games.size(); ++j){
-                (*teams.at(i) == games.at(i)->winner()) ? ++temp : temp = 0;
+                (*curr == games.at(i)->winner()) ? ++temp : temp = 0;
                 if(temp > seq){
                     seq = temp;
                 }
@@ -50,14 +50,14 @@ namespace ariel{
 
     int Stats::loss_seq(){
         int seq = 0;
-        int temp;
+        int temp = 0;
         vector<Team*> teams = this->legue->get_teams();
         vector<Game*> games = this->schedule->get_games();
         for(unsigned int i=0; i< teams.size(); ++i){
             Team* curr = teams.at(i);
             temp = 0;
             for(unsigned int j = 0; j<games.size(); ++j){
-                (*teams.at(i) == games.at(i)->loser()) ? ++temp : temp = 0;
+                (*curr == games.at(i)->loser()) ? ++temp : temp = 0;
                 if(temp > seq){
                     seq = temp;
                 }

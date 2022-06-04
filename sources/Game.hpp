@@ -10,14 +10,14 @@ namespace ariel{
         Team *out;
         int house_p;//house points
         int out_p;//out points
-        int set_points(int min, int max);//randomly by normal distribution
+        static int set_points(double min, double max);//randomly by normal distribution
 
         public:
         Game(Team &h, Team& o);
-        int get_points(std::string team);
-        Team& winner();
-        Team& loser();
-        Team& get_house();
-        Team& get_out();
+        int get_points(std::string const &team) const;
+        Team& winner() const;
+        Team& loser() const;
+        Team& get_house() const;
+        Team& get_out() const;
     };
 }

@@ -5,7 +5,7 @@
 
 using namespace std;
 namespace ariel{
-    Schedule::Schedule(Legue legue){
+    Schedule::Schedule(Legue const &legue){
         vector<Team*> teams = legue.get_teams();
         for(unsigned int i=0; i < teams.size() - 1; ++i){
             for(unsigned int j = i+1; j < teams.size(); ++j){
@@ -16,7 +16,13 @@ namespace ariel{
         }
     }
 
-    vector<Game*> Schedule::get_games(){
+    vector<Game*> Schedule::get_games() const{
         return this->games;
+    }
+
+    Schedule::~Schedule(){
+        for(unsigned int i=0; i<this->games.size(); ++i){
+            delete this->games.at(i);
+        }
     }
 }

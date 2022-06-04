@@ -117,6 +117,9 @@ TEST_CASE("Legue"){
     myTeams.push_back(new Team("Washington Wizards", 0));
     myTeams.push_back(new Team("Oklahoma City Thunder", 0.1));
 	CHECK_NOTHROW(Legue{myTeams});
+	for(unsigned int i=0; i<myTeams.size(); ++i){
+            delete myTeams.at(i);
+    }
 }
 
 TEST_CASE("Schedule"){
@@ -154,5 +157,8 @@ TEST_CASE("Schedule"){
 		}
 		CHECK(count == 38);//19(house games)+19(out games)
 	}
+	for(unsigned int i=0; i<myTeams.size(); ++i){
+            delete myTeams.at(i);
+    }
 }
 
