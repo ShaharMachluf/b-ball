@@ -13,13 +13,13 @@ namespace ariel{
         public:
         Team(std::string n, double t);
         double get_talent() const;
-        int get_wins();
+        int get_wins() const;
         void add_win();
-        int get_losses();
+        int get_losses() const;
         void add_loss();
-        int get_p_shot();
+        int get_p_shot() const;
         void set_p_shot(int points);
-        int get_p_taken();
+        int get_p_taken() const;
         void set_p_taken(int points);
         bool operator==(const Team &other) const;
         bool operator!=(const Team &other) const;

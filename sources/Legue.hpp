@@ -8,10 +8,10 @@ namespace ariel{
     class Legue{
         std::vector <Team*> teams;
         Team *temp;
+        void generate_team(unsigned int num);
         public:
         Legue(std::vector <Team*> vec);//generate only some of the team or not at all
         Legue();//generate the whole team
-        void generate_team(unsigned int num);
         std::vector<Team*> get_teams();
     };
 }

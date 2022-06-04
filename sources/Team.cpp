@@ -9,6 +9,9 @@ namespace ariel{
         if(n == ""){
             throw("team must have a name");
         }
+        if(t < 0 || t > 1){
+            throw("talent must be a number between 0 and 1");
+        }
         this->name = n;
         this->talent = t;
     }
@@ -17,7 +20,7 @@ namespace ariel{
         return this->talent;
     }
 
-    int Team::get_wins(){
+    int Team::get_wins() const{
         return this->wins;
     }
 
@@ -25,7 +28,7 @@ namespace ariel{
         this->wins++;
     }
 
-    int Team::get_losses(){
+    int Team::get_losses() const{
         return this->losses;
     }
 
@@ -33,7 +36,7 @@ namespace ariel{
         this->losses++;
     }
 
-    int Team::get_p_shot(){
+    int Team::get_p_shot() const{
         return this->p_shot;
     }
 
@@ -41,7 +44,7 @@ namespace ariel{
         this->p_shot += points;
     }
 
-    int Team::get_p_taken(){
+    int Team::get_p_taken() const{
         return this->p_taken;
     }
 
