@@ -58,4 +58,8 @@ namespace ariel{
     bool Team::operator!=(const Team &other) const{
         return !(*this == other);
     }
+
+    string Team::get_name() const{
+        return this->name;
+    }
 }

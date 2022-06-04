@@ -79,7 +79,7 @@ TEST_CASE("Legue"){
 	vector<Team*> too_much;
 	for(unsigned int i=0; i<21; i++){
 		Team curr {to_string(i), 0.2};
-		*temp = curr;
+		temp = &curr;
 		too_much.push_back(temp);
 	}
 	CHECK_THROWS((Legue{too_much}));
@@ -145,10 +145,10 @@ TEST_CASE("Schedule"){
 	Schedule sche{legue};
 	vector<Game*> games = sche.get_games();
 	CHECK(games.size() == 380);//the number of games: 20(teams)*(19(house games)+19(out games))/2(each game is played by 2 teams)
-	for(Team* team : myTeams){
+	for(unsigned int i=0; i<myTeams.size(); ++i){
 		int count = 0;
-		for(Game* game : games){
-			if(game->get_house() == *team || game->get_out() == *team){
+		for(unsigned int j = 0; j<games.size(); ++j){
+			if(games.at(j)->get_house() == *myTeams.at(i) || games.at(j)->get_out() == *myTeams.at(i)){
 				count++;
 			}
 		}

@@ -12,6 +12,13 @@ namespace ariel{
         if(vec.size() > team_count){
             throw("there are only 20 teams in a legue");
         }
+        for(unsigned int i=0; i<vec.size()-1; ++i){
+            for(unsigned int j = i+1; j<vec.size(); ++j){
+                if(*vec.at(i) == *vec.at(j)){
+                    throw("all teams must have different names");
+                }
+            }
+        }
         if(vec.size() == team_count){//received 20 teams 
             this->teams = vec;
         }else{//received less than 20 teams and need to generate the rest
@@ -43,7 +50,7 @@ namespace ariel{
         std::default_random_engine re;
         double a_random_double = unif(re);
         Team curr {to_string(num), a_random_double};
-        *temp = curr;
+        temp = &curr;
     }
     
     std::vector<Team*> Legue::get_teams(){

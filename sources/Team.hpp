@@ -23,5 +23,6 @@ namespace ariel{
         void set_p_taken(int points);
         bool operator==(const Team &other) const;
         bool operator!=(const Team &other) const;
+        std::string get_name() const;
     };
 }
