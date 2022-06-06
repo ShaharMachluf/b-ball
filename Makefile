@@ -19,7 +19,7 @@ run: test
 test: TestCounter.o Test.o $(OBJECTS)
 	$(CXX) $(CXXFLAGS) $^ -o $@
 
-main: Main.o $(OBJECTS)
+main: main.o $(OBJECTS)
 	$(CXX) $(CXXFLAGS) $^ -o main
 
 %.o: %.cpp $(HEADERS)

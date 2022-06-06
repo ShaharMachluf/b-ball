@@ -15,8 +15,8 @@ namespace ariel{
         std::vector<Team*> get_leads(int num);
         int win_seq();
         int loss_seq();
-        int more_shots();//shot more bascets then recieved 
-        int won_at_home();//how many teams won in games played at home
-        int won_out();//how many teams won in games played out
+        int more_shots();//shot more baskets then recieved 
+        int won_at_home();//how many games won in teams played at home
+        int won_out();//how many games won in teams played out
     };
 }

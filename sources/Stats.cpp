@@ -4,13 +4,14 @@
 #include "Stats.hpp"
 
 using namespace std;
+constexpr int num_of_teams = 20;
 
 namespace ariel{
     Stats::Stats(Legue &l, Schedule &s):legue(&l), schedule(&s){
         by_wins = this->legue->get_teams();
         by_shoots = this->legue->get_teams();
         sort(by_wins.begin(), by_wins.end(), [](Team *a, Team *b){
-                return (a->get_wins()/a->get_losses()) < (b->get_wins()/b->get_losses());
+                return (a->get_wins()-a->get_losses()) < (b->get_wins()-b->get_losses());
             });
         sort(by_shoots.begin(), by_shoots.end(), [](Team *a, Team *b){
                 return (a->get_p_shot() - a->get_p_taken()) < (b->get_p_shot() - b->get_p_taken());
@@ -26,6 +27,9 @@ namespace ariel{
     }
 
     std::vector<Team*> Stats::get_leads(int num){
+        if(num > num_of_teams){
+            throw("there are only 20 teams in the legue");
+        }
         vector<Team*> leads(this->by_wins.begin(), this->by_wins.begin()+num);
         return leads;
     }
@@ -39,7 +43,7 @@ namespace ariel{
             Team* curr = teams.at(i);
             temp = 0;
             for(unsigned int j = 0; j<games.size(); ++j){
-                (*curr == games.at(i)->winner()) ? ++temp : temp = 0;
+                (*curr == games.at(j)->winner()) ? temp++ : temp = 0;
                 if(temp > seq){
                     seq = temp;
                 }
@@ -57,7 +61,7 @@ namespace ariel{
             Team* curr = teams.at(i);
             temp = 0;
             for(unsigned int j = 0; j<games.size(); ++j){
-                (*curr == games.at(i)->loser()) ? ++temp : temp = 0;
+                (*curr == games.at(j)->loser()) ? ++temp : temp = 0;
                 if(temp > seq){
                     seq = temp;
                 }

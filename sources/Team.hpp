@@ -24,6 +24,6 @@ namespace ariel{
         bool operator==(const Team &other) const;
         bool operator!=(const Team &other) const;
         std::string get_name() const;
-        // ~Team();
+        friend std::ostream& operator<<(std::ostream& output, const Team& other);
     };
 }

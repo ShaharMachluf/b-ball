@@ -62,7 +62,8 @@ namespace ariel{
     string Team::get_name() const{
         return this->name;
     }
-    // Team::~Team(){
-    //     delete &this;
-    // }
+    
+    ostream& operator<<(std::ostream& output, const Team& other){
+        return output<<"Name: "<<other.name<<", talent: "<<other.talent;
+    }
 }
