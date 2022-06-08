@@ -68,7 +68,7 @@ TEST_CASE("Game"){
 	int out_points = game.get_points("out");
 	CHECK((out_points > 60 && out_points < 110));//the normal distribution works as it should and out gets 10 bonus points
 	CHECK_THROWS(game.get_points("dtjh"));
-	CHECK(game.winner() != game.loser());//have one winner nd one loser
+	CHECK(game.winner() != game.loser());//have one winner and one loser
 	CHECK(game.get_house() == lakers);
 	CHECK(game.get_out() == not_lakers);
 }
@@ -117,7 +117,7 @@ TEST_CASE("Legue"){
     myTeams.push_back(new Team("Washington Wizards", 0));
     myTeams.push_back(new Team("Oklahoma City Thunder", 0.1));
 	CHECK_NOTHROW(Legue{myTeams});
-	for(unsigned int i=0; i<myTeams.size(); ++i){
+	for(unsigned int i=0; i<myTeams.size(); ++i){//free memory
             delete myTeams.at(i);
     }
 }
@@ -157,7 +157,7 @@ TEST_CASE("Schedule"){
 		}
 		CHECK(count == 38);//19(house games)+19(out games)
 	}
-	for(unsigned int i=0; i<myTeams.size(); ++i){
+	for(unsigned int i=0; i<myTeams.size(); ++i){//free memory
             delete myTeams.at(i);
     }
 }

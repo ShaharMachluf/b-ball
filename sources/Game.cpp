@@ -25,6 +25,7 @@ namespace ariel{
         else{
             this->out_p += BONUS;
         }
+        //update the teams
         this->house->set_p_shot(this->house_p);
         this->house->set_p_taken(this->out_p);
         this->out->set_p_shot(this->out_p);

@@ -58,10 +58,4 @@ namespace ariel{
     std::vector<Team*> Legue::get_teams() const{
         return this->teams;
     }
-
-    // Legue::~Legue(){
-    //     for(unsigned int i=0; i<this->teams.size(); ++i){
-    //         delete this->teams.at(i);
-    //     }
-    // }
 }
